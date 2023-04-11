@@ -25,3 +25,6 @@ The sample data consists of two images of the night sky named "right_image.jpg" 
 ## Notes
 - The `distance()` function calculates the Euclidean distance between two points in a two-dimensional space.
 - The `blob_log()` function from the skimage package is used to detect stars in the images.
+
+
+### By: Einav Benito -207051707, Shani ichai 318994183
