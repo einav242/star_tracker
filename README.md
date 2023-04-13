@@ -2,7 +2,8 @@
 
 
 ## Overview
-This code is a Python implementation of a program that detects stars in two images and matches them based on their coordinates. 
+This code is a Python implementation of a program that detects stars in two images and matches them based on their coordinates.
+This project uses the "raznak" algo.
 
 ## Requirements
 This code requires the following Python packages:
@@ -20,7 +21,7 @@ The program contains two functions:
 To use the code, simply run the Python script and call the desired function with the appropriate input parameters. The sample code at the end of the script demonstrates how to use both functions.
 
 ## Sample Data
-The sample data consists of two images of the night sky named "right_image.jpg" and "left_image.jpg". These images are included in the same directory as the Python script and can be used to test the functionality of the program.
+The sample data consists of multy images of the night sky named "IMG_3046.jpg - IMG_3063.jpg". These images are included in the data directory and can be used to test the functionality of the program.
 
 ## Notes
 - The `distance()` function calculates the Euclidean distance between two points in a two-dimensional space.
