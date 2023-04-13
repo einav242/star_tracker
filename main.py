@@ -1,31 +1,27 @@
+import os
+
 from scipy.optimize import linear_sum_assignment
 from scipy.spatial import distance_matrix
 from skimage.feature import blob_log
 from skimage.color import rgb2gray, rgb2yuv
 import numpy as np
 import cv2
-import os.path
 
 
 def find_coordinates(img_path, output_path=None):
     # Read the image using OpenCV
     image = cv2.imread(img_path)
-
     # Convert the image to YUV color space and use the Y channel only
     yuv_image = rgb2yuv(image)
     yuv_image = yuv_image[:, :, 0]
-
     # Detect stars using blob detection with Laplacian of Gaussian (LoG) method
     blobs_log = blob_log(yuv_image, max_sigma=30, num_sigma=10, threshold=.1)
-
     # For each detected blob, calculate its brightness and store its coordinates
     coordinates = []
     for i, blob in enumerate(blobs_log):
         y, x, r = blob
         brightness = np.mean(yuv_image[int(y - r):int(y + r), int(x - r):int(x + r)])
         coordinates.append((x, y, r, brightness))
-
-    # Write the coordinates to a file if output_path is provided
     if output_path is not None:
         with open(output_path, 'w') as f:
             for result in coordinates:
@@ -65,7 +61,6 @@ def match_stars(img1_path, img2_path, output_path=None):
         if cost_matrix[row, col] > 0:
             matching_pairs.append((tuple(stars1[row]), tuple(stars2[col])))
 
-
     # Write the output file if a path is provided
     if output_path is not None:
         with open(output_path, "w") as file:
@@ -75,17 +70,15 @@ def match_stars(img1_path, img2_path, output_path=None):
     return matching_pairs
 
 
-list_of_stars = [] 
+list_of_stars = []
+for i in range(3046, 3063):
+    file1 = "IMG_" + str(i) + ".jpg"
+    file1 = os.path.join("data", file1)
 
+    file2 = "IMG_" + str(i + 1) + ".jpg"
+    file2 = os.path.join("data", file2)
 
-for i in range (3046 , 3063 ): 
-    file1 = "IMG_"+ str(i) + ".jpg"
-    file1 = os.path.join ("data", file1)
-    
-    file2 = "IMG_"+ str(i+1) + ".jpg"
-    file2 = os.path.join ("data", file2)
-    
     output = "output" + str(i) + ".txt"
-    list_of_stars.append(match_stars(file1, file2, output))
-    
- 
+    temp_list = match_stars(file1, file2, output)
+    print(file1, "vs.", file2, "= ", temp_list)
+    list_of_stars.append(temp_list)
