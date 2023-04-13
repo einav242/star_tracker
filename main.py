@@ -4,6 +4,7 @@ from skimage.feature import blob_log
 from skimage.color import rgb2gray, rgb2yuv
 import numpy as np
 import cv2
+import os.path
 
 
 def find_coordinates(img_path, output_path=None):
@@ -64,6 +65,7 @@ def match_stars(img1_path, img2_path, output_path=None):
         if cost_matrix[row, col] > 0:
             matching_pairs.append((tuple(stars1[row]), tuple(stars2[col])))
 
+
     # Write the output file if a path is provided
     if output_path is not None:
         with open(output_path, "w") as file:
@@ -73,6 +75,17 @@ def match_stars(img1_path, img2_path, output_path=None):
     return matching_pairs
 
 
-print(find_coordinates("right_image.jpg", "stam.txt"))
-print(find_coordinates("left_image.jpg", "stam2.txt"))
-print(match_stars("right_image.jpg", "left_image.jpg", "stam3.txt"))
+list_of_stars = [] 
+
+
+for i in range (3046 , 3063 ): 
+    file1 = "IMG_"+ str(i) + ".jpg"
+    file1 = os.path.join ("data", file1)
+    
+    file2 = "IMG_"+ str(i+1) + ".jpg"
+    file2 = os.path.join ("data", file2)
+    
+    output = "output" + str(i) + ".txt"
+    list_of_stars.append(match_stars(file1, file2, output))
+    
+ 
