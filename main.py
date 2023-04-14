@@ -71,7 +71,7 @@ def match_stars(img1_path, img2_path, output_path=None):
 
 
 list_of_stars = []
-for i in range(3046, 3063):
+for i in range(3046, 3062):
     file1 = "IMG_" + str(i) + ".jpg"
     file1 = os.path.join("data", file1)
 
