@@ -162,18 +162,23 @@ def find_matching_stars(img1_path, img2_path, output_path=None):
     return matching_pairs
 
 
-for i in range(3046, 3062):
-    file1 = "IMG_" + str(i) + ".jpg"
-    file1 = os.path.join("data", file1)
-    file2 = "IMG_" + str(i + 1) + ".jpg"
-    file2 = os.path.join("data", file2)
-    output = "output" + str(i) + ".txt"
-    output = os.path.join("result", output)
-    temp_list = find_matching_stars(file1, file2, output)
-    tmp = [(m[0].id, m[1].id) for m in temp_list]
-    print(file1, "vs.", file2, "= ", tmp)
-    filename1 = "%s_processed.jpg" % file1
-    filename2 = "%s_processed.jpg" % file2
-    output_img = "output" + str(i) + ".jpg"
-    output_img = os.path.join("result", output_img)
-    show_stars(filename1, filename2, temp_list, output_img)
+def main():
+    for i in range(3046, 3062):
+        file1 = "IMG_" + str(i) + ".jpg"
+        file1 = os.path.join("data", file1)
+        file2 = "IMG_" + str(i + 1) + ".jpg"
+        file2 = os.path.join("data", file2)
+        output = "output" + str(i) + ".txt"
+        output = os.path.join("result", output)
+        temp_list = find_matching_stars(file1, file2, output)
+        tmp = [(m[0].id, m[1].id) for m in temp_list]
+        print(file1, "vs.", file2, "= ", tmp)
+        filename1 = "%s_processed.jpg" % file1
+        filename2 = "%s_processed.jpg" % file2
+        output_img = "output" + str(i) + ".jpg"
+        output_img = os.path.join("result", output_img)
+        show_stars(filename1, filename2, temp_list, output_img)
+
+
+if __name__ == "__main__":
+    main()
