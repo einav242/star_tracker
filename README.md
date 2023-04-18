@@ -2,6 +2,7 @@
 
 
 ## Overview
+
 This code is a Python implementation of a program that detects stars in two images and matches them based on their coordinates.
 This project uses the "raznak" algo.
 
@@ -28,7 +29,8 @@ The sample data consists of multy images of the night sky named "IMG_3046.jpg - 
 - The `blob_log()` function from the skimage package is used to detect stars in the images.
 
 ##Exampels
-In the following image, the result of using the algorithm we wrote is shown. On the right side, you can see a text file where each line contains 2 numbers. The left number represents the ID of a star from the left image, and the right number represents the ID of a star from the right image that corresponds to the left star. It can be seen that all the stars that have a match are colored in green with their corresponding ID written, and all other stars are colored in a pale color.
 
+In the following image, the result of using the algorithm we wrote is shown. On the right side, you can see a text file where each line contains 2 numbers. The left number represents the ID of a star from the left image, and the right number represents the ID of a star from the right image that corresponds to the left star. It can be seen that all the stars that have a match are colored in green with their corresponding ID written, and all other stars are colored in a pale color.
+![צילום מסך 2023-04-18 134843](https://user-images.githubusercontent.com/93386470/232755214-0675934c-3199-496a-a28f-86f842f84d52.png)
 
 ### By: Einav Benito -207051707, Shani ichai 318994183
